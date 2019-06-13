@@ -1,0 +1,2 @@
+# MikotoBot
+A discord bot.
