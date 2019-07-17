@@ -1,2 +1,1 @@
-# MikotoBot
-A Mikoto Bot
+# discord.js

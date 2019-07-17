@@ -1,0 +1,19 @@
+{
+  "name": "mikotobot",
+  "version": "1.0.0",
+  "description": "Mikoto Bot Discord Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MasterCitrus",
+  "license": "ISC",
+  "dependencies": {
+    "common-tags": "^1.8.0",
+    "discord.js": "^11.5.1",
+    "mongodb": "^3.2.7",
+    "node-fetch": "^2.6.0",
+    "nodemon": "^1.19.1",
+    "urban": "^0.3.2"
+  }
+}
