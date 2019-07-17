@@ -9,3 +9,4 @@ The development of the Mikoto Bot.
  - Meme Generator
  - Adding Database
  - Level System
+ - Welcome/Leave Messages
