@@ -38,12 +38,15 @@ module.exports = {
           let type = i.type
           let definition = i.definition
           let example = i.example
-          embed.addField(`${index}`, `**TYPE:** ${type}\n**DEFINITION:** ${definition}\n**EXAMPLE:** ${example || "none"}`)
+          embed.addField(`${index}`, `**TYPE:** ${type || "none"}\n**DEFINITION:** ${definition || "none"}\n**EXAMPLE:** ${example || "none"}`)
         }
         message.channel.send(embed)
       } else {
         message.channel.send(item2.message)
       }
+    }).catch(err => {
+      console.log(err.message, err)
+      message.channel.send("Invalid word... baka!")
     })
   }
 }
