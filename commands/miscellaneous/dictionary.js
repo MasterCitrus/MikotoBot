@@ -15,10 +15,6 @@ module.exports = {
     let data = []
     let dataLength = data.length
     let word = args[0]
-    let type;
-    let index;
-    let example;
-    let definition;
     const url = `https://owlbot.info/api/v3/dictionary/${word}`
     if(!args[0]) return message.channel.send("Provide a word to define... baka!")
     fetch(url, {
@@ -38,10 +34,10 @@ module.exports = {
         .setFooter(message.author.tag, message.author.displayAvatarURL)
         .setTimestamp();
         for(i of item.definitions) {
-          index = item.definitions.indexOf(i) + 1
-          type = i.type
-          definition = i.definition
-          example = i.example
+          let index = item.definitions.indexOf(i) + 1
+          let type = i.type
+          let definition = i.definition
+          let example = i.example
           embed.addField(`${index}`, `**TYPE:** ${type}\n**DEFINITION:** ${definition}\n**EXAMPLE:** ${example || "none"}`)
         }
         message.channel.send(embed)
