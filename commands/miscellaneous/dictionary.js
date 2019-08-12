@@ -13,36 +13,41 @@ module.exports = {
   },
   run: async (bot, message, args) => {
     let data = []
-    let item = data
     let dataLength = data.length
     let word = args[0]
+    let type;
+    let index;
+    let example;
+    let definition;
     const url = `https://owlbot.info/api/v3/dictionary/${word}`
     if(!args[0]) return message.channel.send("Provide a word to define... baka!")
-    try {
-      fetch(url, {
-        headers: { Authorization: `Token ${process.env.OWLBOTAPIT}` }
-      }).then(res => res.json()).then(body => {
-        console.log(body)
-        data.push(...body.definitions)
-        console.log(data)
+    fetch(url, {
+      headers: { Authorization: `Token ${process.env.OWLBOTAPIT}` }
+    }).then(res => res.json()).then(body => {
+      console.log(body)
+      data.push(body)
+      console.log(data)
+      let item = data[0]
+      let item2 = data[0][0]
+      console.log(item, item2)
+      if(!item2) {
         let embed = new RichEmbed()
         .setColor(blue_dark)
         .setTitle(`Definition: ${body.word}`)
-        .setDescription(`**PRONOUNCIATION:** ${body.pronounciation || "none"}`)
+        .setDescription(`**PRONUNCIATION:** ${body.pronunciation || "none"}`)
         .setFooter(message.author.tag, message.author.displayAvatarURL)
         .setTimestamp();
-        console.log(data[0].type)
-        for(i of item) {
-          let index = item.indexOf(i) + 1
-          let type = i.type
-          let definition = i.definition
-          let example = i.example
+        for(i of item.definitions) {
+          index = item.definitions.indexOf(i) + 1
+          type = i.type
+          definition = i.definition
+          example = i.example
           embed.addField(`${index}`, `**TYPE:** ${type}\n**DEFINITION:** ${definition}\n**EXAMPLE:** ${example || "none"}`)
         }
         message.channel.send(embed)
-      })
-    } catch(e) {
-      console.log(e.stack)
-    }
+      } else {
+        message.channel.send(item2.message)
+      }
+    })
   }
 }
