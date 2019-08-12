@@ -11,17 +11,18 @@ module.exports = {
         aliases: ["ui"]
     },
     run: async (bot, message, args) => {
-    let uEmbed = new RichEmbed()
+      let user = message.mentions.members.first() || message.guild.members.get(args[0]) ||message.guild.members.get(message.author.id)
+      let embed = new RichEmbed()
         .setColor(red_light)
         .setTitle("User Info")
-        .setThumbnail(message.author.displayAvatarURL)
-        .setAuthor(`${message.author.username} Info`)
-        .addField("**Username:**", `${message.author.username}`, true)
-        .addField("**Discriminator:**", `${message.author.discriminator}`, true)
-        .addField("**ID:**", `${message.author.id}`, true)
-        .addField("**Status:**", `${message.author.presence.status}`, true)
-        .addField("**Created At:**", `${message.author.createdAt}`, true);
+        .setThumbnail(user.user.displayAvatarURL)
+        .addField("**Username:**", `${user.user.username}`, true)
+        .addField("**Discriminator:**", `${user.user.discriminator}`, true)
+        .addField("**ID:**", `${user.id}`, true)
+        .addField("**Created At:**", `${user.user.createdAt}`, true)
+        .setFooter(message.author.tag, message.author.avatarURL)
+        .setTimestamp();
 
-    message.channel.send(uEmbed);
+      message.channel.send(embed);
     }
 }

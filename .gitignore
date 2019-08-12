@@ -1,2 +1,7 @@
 /node_modules/*
 .env
+start_bot.bat
+/commands/fun/test.js
+/commands/miscellaneous/tedxsnek.js
+/commands/fun/img.js
+/commands/default

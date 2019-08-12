@@ -11,4 +11,4 @@ bot.config = require('./config');
 ["console", "command", "event"].forEach(x => require(`./handlers/${x}`)(bot));
 
 bot.mongoose.init();
-bot.login("NTg4MDA0NDE3MzQxNjIwMjQ0.XQNMUw.YUjTz7re9Vhx_VELhDeG7QMzrBc");
+bot.login(bot.config.token);
