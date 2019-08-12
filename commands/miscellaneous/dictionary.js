@@ -23,7 +23,7 @@ module.exports = {
         headers: { Authorization: `Token ${process.env.OWLBOTAPIT}` }
       }).then(res => res.json()).then(body => {
         console.log(body)
-        data.push(...body.definitions).catch(e => console.log(e))
+        data.push(...body.definitions)
         console.log(data)
         let embed = new RichEmbed()
         .setColor(blue_dark)
