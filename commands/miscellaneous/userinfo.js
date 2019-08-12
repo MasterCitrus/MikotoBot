@@ -11,7 +11,7 @@ module.exports = {
         aliases: ["ui"]
     },
     run: async (bot, message, args) => {
-      let user = message.mentions.members.first() || message.guild.members.get(args[0]) ||message.guild.members.get(message.author.id)
+      let user = message.mentions.members.first() || message.guild.members.get(args[0]) || message.guild.members.get(message.author.id)
       let embed = new RichEmbed()
         .setColor(red_light)
         .setTitle("User Info")

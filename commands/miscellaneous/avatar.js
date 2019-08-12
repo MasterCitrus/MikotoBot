@@ -10,13 +10,12 @@ module.exports = {
     aliases: ["icon", "pfp"]
   },
   run: async (bot, message, args) => {
-    let user = message.mentions.users.first() || message.guild.members.get(args[0]);
-    if(!args[0]) user = message.author;
+    let user = message.mentions.users.first() || message.guild.members.get(args[0]) || message.guild.members.get(message.author.id);
 
     let embed = new RichEmbed()
-    .setTitle(user.tag)
-    .setDescription(`[Avatar URL](${user.avatarURL})`)
-    .setImage(user.avatarURL)
+    .setTitle(user.user.tag)
+    .setDescription(`[Avatar URL](${user.user.displayAvatarURL})`)
+    .setImage(user.user.displayAvatarURL)
     .setColor("#000000");
 
     message.channel.send(embed);
