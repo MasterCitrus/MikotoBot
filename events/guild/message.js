@@ -18,7 +18,7 @@ module.exports = async (bot, message) => {
     let args = message.content.slice(settings.prefix.length).trim().split(/ +/g);
     let cmd = args.shift().toLowerCase();
     let msg = message.content.toLowerCase()
-    if(message.isMentioned(bot.user)) return message.channel.send(`The prefix is \`${settings.prefix}\``)
+    if(message.isMentioned(bot.user) && !message.content.startsWith(settings.prefix)) return message.channel.send(`The prefix is \`${settings.prefix}\``)
     if(responseObject[msg]) message.channel.send(responseObject[msg])
     if(!message.content.startsWith(settings.prefix)) return;
     let commandfile = bot.commands.get(cmd) || bot.commands.get(bot.aliases.get(cmd))
