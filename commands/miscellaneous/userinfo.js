@@ -20,6 +20,7 @@ module.exports = {
         .addField("**Discriminator:**", `${user.user.discriminator}`, true)
         .addField("**ID:**", `${user.id}`, true)
         .addField("**Created At:**", `${user.user.createdAt}`, true)
+        .addField("**Joined At:**", `${user.user.joinedAt}`, true)
         .setFooter(message.author.tag, message.author.avatarURL)
         .setTimestamp();
 
