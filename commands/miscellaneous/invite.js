@@ -9,10 +9,9 @@ module.exports = {
   },
   run: async (bot, message, args) => {
     let embed = new RichEmbed()
-    .setTitle("Bot Invite")
-    .setAuthor(message.guild.me.displayName, bot.user.displayAvatarURL)
+    .setAuthor(`${message.guild.me.displayName} Bot Invite`, bot.user.displayAvatarURL)
     .setThumbnail(bot.user.displayAvatarURL)
-    .addField("Invite Link", "https://discordapp.com/api/oauth2/authorize?client_id=588004417341620244&scope=bot&permissions=8");
+    .addField("Invite Link", "[Link](https://discordapp.com/api/oauth2/authorize?client_id=588004417341620244&permissions=8&scope=bot)");
     message.channel.send(embed);
   }
 }
