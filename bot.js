@@ -1,6 +1,4 @@
 const { Client, Collection } = require("discord.js");
-const { token } = require("./botconfig.json");
-require('dotenv-flow').config();
 const bot = new Client();
 
 require('./utils/functions')(bot);
