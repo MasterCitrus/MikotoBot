@@ -16,15 +16,16 @@ module.exports = {
 
     switch (setting) {
       case 'prefix': {
-        if(!newSetting) {
-          return message.channel.send(`Current prefix: \`${settings.prefix}\``);
+        if(newSetting) {
+          try {
+            await bot.updateGuild(message.guild, { prefix: newSetting });
+            message.channel.send(`Prefix updated: \`${newSetting}\``);
+          } catch(e) {
+            message.channel.send(`An error occured: **${e.message}**`)
+          }
         }
-        try {
-          await bot.updateGuild(message.guild, { prefix: newSetting });
-          message.channel.send(`Prefix updated: \`${newSetting}\``);
-        } catch(e) {
-          message.channel.send(`An error occured: **${e.message}**`)
-        }
+
+        message.channel.send(`Current prefix: \`${settings.prefix}\``);
         break;
       }
       default: {
