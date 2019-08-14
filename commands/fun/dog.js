@@ -7,7 +7,6 @@ module.exports = {
     config: {
         name: "dog",
         description: "Sends a picture of a dog!",
-        usage: `${settings.prefix}dog`,
         category: "fun",
         accessableby: "Members",
         aliases: ["doggo", "puppy"]

@@ -3,10 +3,9 @@ const { cyan } = require("../../colours.json");
 const fetch = require('node-fetch');
 
 module.exports = {
-    config: {
+    config:  {
         name: "cat",
         description: "sends a picture of a cat!",
-        usage: `${settings.prefix}cat`,
         category: "fun",
         accessableby: "Members",
         aliases: ["catto"]
