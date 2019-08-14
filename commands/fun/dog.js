@@ -7,6 +7,7 @@ module.exports = {
     config: {
         name: "dog",
         description: "Sends a picture of a dog!",
+        usage: `${settings.prefix}dog`,
         category: "fun",
         accessableby: "Members",
         aliases: ["doggo", "puppy"]
@@ -23,7 +24,7 @@ module.exports = {
         .setAuthor(`${bot.user.username} DOGS!`, message.guild.iconURL)
         .setImage(body.message)
         .setTimestamp()
-        .setFooter(bot.user.username.toUpperCase(), bot.user.displayAvatarURL)
+        .setFooter(message.author.tag, message.author.displayAvatarURL)
 
             message.channel.send(dEmbed)
             msg.delete();
