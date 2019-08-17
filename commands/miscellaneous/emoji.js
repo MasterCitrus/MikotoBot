@@ -4,7 +4,7 @@ module.exports = {
     description: "",
     usage: "",
     category: "",
-    accessableby: "",
+    accessableby: "Members",
     aliases: []
   },
   run: async (bot, message, args) => {
