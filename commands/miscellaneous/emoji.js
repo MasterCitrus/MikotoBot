@@ -8,7 +8,7 @@ module.exports = {
     aliases: []
   },
   run: async (bot, message, args) => {
-    const emojiList = message.guild.emojis.map((e, x) => (x + ' = ' + e) + ' | ' +e.name).join('\n');
+    let emojiList = message.guild.emojis.map((e, x) => (x + ' = ' + e) + ' | ' +e.name).join('\n');
    message.channel.send(emojiList);
   }
 }
