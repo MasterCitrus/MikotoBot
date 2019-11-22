@@ -5,3 +5,4 @@ start_bot.bat
 /commands/miscellaneous/tedxsnek.js
 /commands/fun/img.js
 /commands/default
+/.vs/*

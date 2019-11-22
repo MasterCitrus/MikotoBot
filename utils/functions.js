@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { Guild } = require('../models');
+const { Guild, Profile } = require('../models');
 
 module.exports = bot => {
 
@@ -38,4 +38,30 @@ module.exports = bot => {
             return text;
         }
     };
+
+	bot.createProfile = async profile => {
+		const merged = Object.assign({ _id: mongoose.Types.ObjectId() }, profile);
+
+		const newProfile = await new Profile(merged);
+		return newProfile.save()
+			.then(console.log(`New profile saved for user ${merged.userID}`));
+	}
+	bot.getProfile = async user => {
+		let data = await Profile.findOne({ userID: user.user.id, serverID: user.guild.id }, function (err, profile) { });
+        if(data) return data;
+        else console.log("User not found");
+    }
+
+	bot.updateProfile = async (user, data) => {
+		let profile = await bot.getProfile(user);
+
+		if (typeof profile !== 'object') profile = {};
+		for (const key in data) {
+			if (profile[key] !== data[key]) profile[key] = data[key];
+			else return;
+		}
+
+		console.log(`Profile ${profile.userID} updated: ${Object.keys(data)}`);
+		return await profile.updateOne(profile);
+	}
 };
