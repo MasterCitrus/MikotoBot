@@ -45,12 +45,12 @@ module.exports = bot => {
 		const newProfile = await new Profile(merged);
 		return newProfile.save()
 			.then(console.log(`New profile saved for user ${merged.userID}`));
-	}
+	};
 	bot.getProfile = async user => {
-		let data = await Profile.findOne({ userID: user.user.id, serverID: user.guild.id }, function (err, profile) { });
+		let data = await Profile.findOne({ userID: user.user.id, guildID: user.guild.id }, function (err, profile) { });
         if(data) return data;
         else console.log("User not found");
-    }
+    };
 
 	bot.updateProfile = async (user, data) => {
 		let profile = await bot.getProfile(user);
