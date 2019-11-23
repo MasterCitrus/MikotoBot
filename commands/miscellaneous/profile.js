@@ -11,9 +11,6 @@ module.exports = {
 	},
 	run: async (bot, message, args) => {
 		let user = message.mentions.users.first() || message.guild.members.get(args[0]) || message.guild.members.get(message.author.id);
-		console.log(user);
-		console.log(user.guild.id)
-		console.log(user.user.id)
 		const newprofile = {
 			userID: user.user.id,
 			guildID: user.guild.id
@@ -21,13 +18,14 @@ module.exports = {
 
 		let profile = await bot.getProfile(user);
 		if (!profile) await bot.createProfile(user);
-		
+		let nextLevelXP = Math.floor((5 * (profile.level ^ 2) + (50 * profile.level) + 100) - profile.xp);
 
 		let embed = new RichEmbed()
 			.setTitle(user.user.tag)
-			.setThumbnail(user.user.displayAvatarUrl)
+			.setThumbnail(user.user.displayAvatarURL)
 			.addField("Level", `${profile.level}`, true)
 			.addField("XP", `${profile.xp}`, true)
+			.addField("XP till next lvl", nextLevelXP)
 			.setColor("#000000");
 
 		message.channel.send(embed);
