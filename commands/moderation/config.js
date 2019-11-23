@@ -9,7 +9,7 @@ module.exports = {
     accessableby: "Administrators"
   },
   run: async (bot, message, args, settings) => {
-    if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send("YOu don't have permission to use this command.");
+    //if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send("You don't have permission to use this command.");
 
     const setting = args[0];
     const newSetting = args.slice(1).join(" ");
@@ -25,8 +25,27 @@ module.exports = {
           }
         }
 
-        message.channel.send(`Current prefix: \`${settings.prefix}\``);
+        message.channel.send(`Old prefix: \`${settings.prefix}\``);
         break;
+      }
+      case 'levels': {
+        let data = await bot.getGuild(message.guild);
+        let levels = data.levels;
+        if(!levels) {
+            try {
+              await bot.updateGuild(message.guild, {levels: !levels});
+              message.channel.send("Levels enabled");
+            } catch(e) {
+              message.channel.send(`An error occured\`${e.message}\``);
+            }
+        } else if(levels) {
+          try {
+            await bot.updateGuild(message.guild, { levels: !levels });
+            message.channel.send("Levels disabled");
+          } catch(e) {
+            message.channel.send(`An error occured\`${e.message}\``);
+          }
+        }
       }
       default: {
         message.channel.send(`Please provide a setting to view/update`);

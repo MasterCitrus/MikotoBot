@@ -19,18 +19,21 @@ module.exports = async (bot, message) => {
 	let xpAmt = Math.floor((Math.random() * 15) + 10);
 
 	if (message.author.bot || message.channel.type === "dm") return;
-	if (!xpCooldown.has(message.author.id)) {
-		try {
-			await updateXP(bot, message.member, xpAmt).catch((err) => { console.log(err) });
-			xpCooldown.add(message.author.id);
-			setTimeout(() => {
-				xpCooldown.delete(message.author.id)
-			}, 60000)
-		} catch (e) {
-			console.log(e)
-		}
-	}
-	await updateLVL(bot, message.member).catch((err) => { console.log(err) });
+	if(settings.levels) {
+        if (!xpCooldown.has(message.author.id)) {
+            try {
+                await updateXP(bot, message.member, xpAmt).catch((err) => { console.log(err) });
+                xpCooldown.add(message.author.id);
+                setTimeout(() => {
+                    xpCooldown.delete(message.author.id)
+                }, 60000)
+            } catch (e) {
+                console.log(e)
+            }
+        }
+        await updateLVL(bot, message.member).catch((err) => { console.log(err) });
+    }
+
     let args = message.content.slice(settings.prefix.length).trim().split(/ +/g);
     let cmd = args.shift().toLowerCase();
     let msg = message.content.toLowerCase();
