@@ -9,7 +9,7 @@ module.exports = {
     accessableby: "Administrators"
   },
   run: async (bot, message, args, settings) => {
-    //if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send("You don't have permission to use this command.");
+    if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send("You don't have permission to use this command.");
 
     const setting = args[0];
     const newSetting = args.slice(1).join(" ");
