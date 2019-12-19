@@ -1,4 +1,3 @@
-const { ownerid, prefix } = require("../../botconfig.json");
 const { inspect } = require("util")
 
 module.exports = { 
@@ -7,10 +6,10 @@ module.exports = {
         description: "Evaluates code",
         accessableby: "Bot Owner",
         type: "owner",
-        usage: `${prefix}eval <input>`
+        usage: `eval <input>`
     },
-    run: async (bot, message, args) => {
-    if(message.author.id == ownerid) {
+    run: async (bot, message, args, settings) => {
+    if(message.author.id == process.env.OWNERID) {
         try {
             let toEval = args.join(" ")
 			let evaluated = inspect(eval(toEval, { depth: 0 }));

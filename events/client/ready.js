@@ -1,4 +1,4 @@
-const { prefix } = require('../../botconfig.json');
+
 
 module.exports = async bot => {
      console.log(`${bot.user.username} is online`)
@@ -6,7 +6,7 @@ module.exports = async bot => {
 
     let statuses = [
         `${bot.guilds.size} servers!`,
-        `${prefix}help`,
+        `${process.env.PREFIX}help`,
         `over ${bot.users.size} users!`
     ]
 

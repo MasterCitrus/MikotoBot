@@ -38,7 +38,7 @@ module.exports = {
           .setTitle('LOVE COMPATIBILITY')
           .addField("Person 1", args[0], true)
           .addField("Person 2", args[1], true)
-          .addField("Compatibility", percentage)
+          .addField("Compatibility", `${percentage}%`)
           .addField("Reading", response)
           .setTimestamp()
           .setFooter(message.author.tag, message.author.displayAvatarURL);
