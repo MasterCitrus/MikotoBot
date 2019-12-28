@@ -6,8 +6,9 @@ module.exports = async (bot, message) => {
       "lolis": "Jail Time!",
       "yare yare": "daze",
       "ayy": "lmao",
-      "69": "nice"
-    }
+      "69": "nice",
+        "420": "Blaze it"
+    };
 	if (!message.guild) return;
     let settings;
     try {
