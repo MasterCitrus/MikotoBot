@@ -9,7 +9,8 @@ const guildSchema = mongoose.Schema({
   welcomeMsg: String,
   modRole: String,
   adminRole: String,
-  levels: Boolean
+  levels: Boolean,
+  logChannel: String
 });
 
 module.exports = mongoose.model('Guild', guildSchema);

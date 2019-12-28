@@ -46,6 +46,20 @@ module.exports = {
             message.channel.send(`An error occured\`${e.message}\``);
           }
         }
+        break;
+      }
+      case 'logs': {
+        let channel = message.guild.channels.get(newSetting) || message.guild.channels.find(c => c.name === newSetting);
+        console.log(channel.id);
+          if(channel) {
+            try {
+              await bot.updateGuild(message.guild, { logChannel: channel.id });
+              message.channel.send(`Log channel updated: \`${channel.name}\``);
+            } catch(e) {
+              message.channel.send(`An error occured: **${e.message}**`)
+            }
+          }
+        break;
       }
       default: {
         message.channel.send(`Please provide a setting to view/update`);

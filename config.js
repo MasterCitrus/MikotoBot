@@ -10,6 +10,7 @@ module.exports = {
         welcomeMsg: 'Welcome {{user}} to {{guild}}!',
         modRole: 'Moderator',
         adminRole: 'Administrator',
-        levels: false
+        levels: false,
+        logChannel: ''
     }
 };
