@@ -7,7 +7,9 @@ module.exports = async (bot, message) => {
       "yare yare": "daze",
       "ayy": "lmao",
       "69": "nice",
-        "420": "Blaze it"
+      "420": "Blaze it"
+      "motivated": "https://tenor.com/view/motivation-motivated-devil-may-cry-dmc-vergil-gif-16091780",
+      "motivation": "https://tenor.com/view/motivation-motivated-devil-may-cry-dmc-vergil-gif-16091780"
     };
 	if (!message.guild) return;
     let settings;
